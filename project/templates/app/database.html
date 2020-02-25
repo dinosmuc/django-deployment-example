@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Data Base</title>
+    <link rel="stylesheet" href="{% static "app/database.css" %}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>This is a data base page</h1>
+        <p></p>
+        <table class = "table table-bordered table-dark">
+          <th>USERS</th>
+          <th>E-MAIL</th>
+            {% if users %}
+                {% for user in users %}
+                  <tr>
+                    <td>{{ user.first_name }} {{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
+                  </tr>
+            {% endfor %}
+          </table>
+            {% else %}
+               <p>Somphtin is wrong with FOR loop! </p>
+         {% endif %}
+         <p></p>
+         <p></p>
+         <a href="{% url 'app:input' %}"><input  type="submit" class="btn btn-primary" value="Input New User"></a>
+
+
+
+      </div>
+    </div>
+
+
+  </body>
+</html>
